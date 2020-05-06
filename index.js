@@ -28,6 +28,26 @@ app.use(express.static('public'));
 
 app.use('/api/history', requiere('./routes/history.routes'));
 
+//db setup
+const db = require("./database");
+const dbName = "Cluster0";
+const collectionName = "toptive-exercice";
+
+
+//db init
+db.initialize(dbName, collectionName, function(dbCollection) { // successCallback
+    //get all items
+    dbCollection.find().toArray(function(err, result) {
+        if (err) throw err;
+          console.log(result);
+    });
+
+    // << db CRUD routes >>
+
+}, function(err) { // failureCallback
+    throw (err);
+});
+
 
 //LISTENING THE SERVER
 app.listen(app.get('port'), () => {

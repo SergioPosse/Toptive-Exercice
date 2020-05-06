@@ -1,9 +1,28 @@
-const mongoose = requiere('mongoose');
+// mongodb driver
+const MongoClient = require("mongodb").MongoClient;
 
-const URI = 'mongodb://localhost/'
+const dbConnectionUrl = "mongodb+srv://<invitado>:<invitado>@cluster0-ndgux.mongodb.net/test?retryWrites=true&w=majority";
 
-mongoose.conect(URI)
-    .then(db => console.log('DB CONNEECTED'))
-    .catch(err => console.error(err));
+function initialize(
+    dbName,
+    dbCollectionName,
+    successCallback,
+    failureCallback
+) {
+    MongoClient.connect(dbConnectionUrl, function(err, dbInstance) {
+        if (err) {
+            console.log(`[MongoDB connection] ERROR: ${err}`);
+            failureCallback(err); // this should be "caught" by the calling function
+        } else {
+            const dbObject = dbInstance.db(dbName);
+            const dbCollection = dbObject.collection(dbCollectionName);
+            console.log("[MongoDB connection] SUCCESS");
 
-module.exports = mongoose;
+            successCallback(dbCollection);
+        }
+    });
+}
+
+module.exports = {
+    initialize
+};
