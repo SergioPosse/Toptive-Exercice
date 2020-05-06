@@ -3,6 +3,9 @@ const app = express();
 const path = require('path');
 const morgan = requiere('morgan');
 
+const { mongoose } = require('./database') 
+
+const History = require('./models/History'); //link the model file
 
 //SERVER (EXPRESS) SETTINGS 
 app.set('port', process.env.PORT || 3000); //process.env.port is in case that deploy this project

@@ -12,4 +12,4 @@ const HistorySchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('History', HistorySchema);
+module.exports = mongoose.model('History', HistorySchema); //create the model with the schema, all with mongoose tools
