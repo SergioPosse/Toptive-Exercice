@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const History = require('../models/History'); //link the model file
+const Toptive = require('../models/History'); //link the model file
 
 
 router.get('/', async (req, res) => { 
@@ -10,7 +10,12 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => { //post
-    console.log(req.body);
+    const { expression, result } = req.body;
+    const history = new History({expression, result});
+    await history.save();
+
+    console.log(toptive);
+    res.json({status: 'saved'});
 });
 
 module.exports = router;

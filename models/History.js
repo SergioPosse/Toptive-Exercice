@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+
 const { Schema } = mongoose;
 
 const HistorySchema = new Schema({
-  example: {
+  expression: {
     type: String,
     required: true
   },
