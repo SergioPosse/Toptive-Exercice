@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const morgan = requiere('morgan');
+const morgan = require('morgan');
 
 const { mongoose } = require('./database') 
 
@@ -26,27 +26,7 @@ app.use(express.static('public'));
 //ROUTES
 //app.use(require('./routes/history.routes.js')); //in this exercice i only write routes in one archive
 
-app.use('/api/history', requiere('./routes/history.routes'));
-
-//db setup
-const db = require("./database");
-const dbName = "Cluster0";
-const collectionName = "toptive-exercice";
-
-
-//db init
-db.initialize(dbName, collectionName, function(dbCollection) { // successCallback
-    //get all items
-    dbCollection.find().toArray(function(err, result) {
-        if (err) throw err;
-          console.log(result);
-    });
-
-    // << db CRUD routes >>
-
-}, function(err) { // failureCallback
-    throw (err);
-});
+app.use('/api/history', require('./routes/history.routes'));
 
 
 //LISTENING THE SERVER
