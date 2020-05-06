@@ -1,0 +1,19 @@
+#main{
+    background-color:pink;
+    margin-bottom:0px;
+    margin-top:0px;
+    padding: 50px;
+}
+#footer{
+    height: 50px;
+    background-color: gray;
+    margin-top:0px;
+}
+#menu{
+    background-color: yellow;
+    margin-top:50px;
+    margin-bottom:0px;
+}
+.row .col .l4 .s4 .m4{
+    padding: 0;
+}
