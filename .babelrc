@@ -1,0 +1,5 @@
+{
+"presets": ["env", "react"] //configure the presets that babels use
+}
+
+//env is for modern js code
