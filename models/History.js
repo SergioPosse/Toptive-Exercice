@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const HistorySchema = new Schema({
-userID: {
-    type: integer,
-    required: true
-  },
   example: {
     type: String,
     required: true
