@@ -7,7 +7,7 @@ const path = require('path');
 
 
 //SERVER (EXPRESS) SETTINGS 
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000); //process.env.port is in case that deploy this project
 
 app.set('engine', 'ejs');
 
@@ -21,5 +21,5 @@ app.use(require('./routes/routes.js'));
 
 //LISTENING THE SERVER
 app.listen(app.get('port'), () => {
-    console.log("Server on port 3000");
+    console.log(`Server on port ${app.get('port')}`);
 });
