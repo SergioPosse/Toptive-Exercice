@@ -16,11 +16,8 @@ app.use(morgan('dev'));//morgan allow to see requests in server console
 
 app.use(express.json()); //now express include json 
 
-app.set('engine', 'ejs'); //i use ejs for a thing with partials thats is very useful in front
 
-app.set('views', path.join(__dirname, 'public'));//specificate the view folder with __dirname (local path of project)
-
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 //ROUTES
