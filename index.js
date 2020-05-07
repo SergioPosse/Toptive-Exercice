@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //ROUTES
 //app.use(require('./routes/history.routes.js')); //in this exercice i only write routes in one archive
 
-app.use('/api/history', require('./routes/history.routes'));
+app.use('/api', require('./routes/routes'));
 
 
 //LISTENING THE SERVER
