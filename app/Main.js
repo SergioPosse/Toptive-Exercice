@@ -5,7 +5,8 @@ class Main extends Component {
         super();
         this.state={
                 expression:'',
-                result:''
+                result:'',
+                current:''
         };
         this.handleChange = this.handleChange.bind(this);//binding events
         this.calculateExpression = this.calculateExpression.bind(this);
@@ -33,7 +34,8 @@ class Main extends Component {
         const { name, value} = e.target;
         this.setState(
             {
-            [name]: value //with [name]: is compatible with every component that send name and value and have onChange event handler
+            [name]: value,//with [name]: is compatible with every component that send name and value and have onChange event handler
+            current: value
             }
         )
 
@@ -42,15 +44,29 @@ class Main extends Component {
     render(){
         return(
             <div>
-                 <form onSubmit={this.calculateExpression}>
-                    <div className="input-field">
-                        <input name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" />
-                    </div>
-                    <button type="submit"  className="waves-effect waves-light btn">Calculate</button>
-                    <div id="result" className="col l4 m4 s4 offset-l4">
-                        {this.state.result}
-                    </div>
-                </form>
+                <div id="menu" class="col l4 m4 s4 offset-l4">
+                    <h5>TOPLIVE Calculator</h5>
+                    <ul id="nav-mobile">
+                    <li name="current">Current Operation:{this.state.current}</li>
+                        <li><a href="badges.html">View History</a></li>
+                    </ul>
+                </div>
+                
+                <div id="main" class="center col l4 s4 m4 offset-l4">
+                    <form onSubmit={this.calculateExpression}>
+                        <div className="input-field">
+                            <input name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" />
+                        </div>
+                        <button type="submit"  className="waves-effect waves-light btn">Calculate</button>
+                        <div id="result" className="col l4 m4 s4 offset-l4">
+                            {this.state.result}
+                        </div>
+                    </form>
+                </div>
+
+                <div id="footer" class="valign-wrapper col l4 s4 m4 offset-l4">       
+                    Sergiodavidposse@gmail.com
+                </div>
             </div>
         )
     }
