@@ -47,7 +47,7 @@ class Main extends Component {
                 <div id="menu" class="col l4 m4 s4 offset-l4">
                     <h5>TOPLIVE Calculator</h5>
                     <ul id="nav-mobile">
-                    <li name="current">Current Operation:{this.state.current}</li>
+                    <li name="current">Current Operation: {this.state.current}</li>
                         <li><a href="badges.html">View History</a></li>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@ class Main extends Component {
                 <div id="main" class="center col l4 s4 m4 offset-l4">
                     <form onSubmit={this.calculateExpression}>
                         <div className="input-field">
-                            <input name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" />
+                            <input class="center" name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" />
                         </div>
                         <button type="submit"  className="waves-effect waves-light btn">Calculate</button>
                         <div id="result" className="col l4 m4 s4 offset-l4">

@@ -1,22 +1,39 @@
 #main{
-    background-color:pink;
+    background-color:rgb(83, 58, 48);
     margin-bottom:0px;
     margin-top:0px;
     padding: 50px;
+    color: white;
 }
 #footer{
     height: 50px;
-    background-color: gray;
+    background-color: rgb(27, 54, 30);
     margin-top:0px;
 }
 #menu{
-    background-color: yellow;
+    background-color: rgb(26, 53, 36);
     margin-top:50px;
     margin-bottom:0px;
+    color: rgb(240, 223, 223)
 }
 .row .col .l4 .s4 .m4{
     padding: 0;
 }
 #result{
     padding: 20px;
+    font-weight: bolder;
+    font-size: large;
 }
+ul li a{
+    color: rgb(79, 255, 25);
+}
+
+input{
+    color:white;
+    font-weight: bold;
+}
+
+input::placeholder {
+    color: #bbad85;
+    opacity: 0.3;
+  }
