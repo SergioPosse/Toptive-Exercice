@@ -7,14 +7,28 @@ class Main extends Component {
         this.state={
                 expression:'',
                 result:'',
-                current:''
+                current:'',
+                history: []
         };
         this.handleChange = this.handleChange.bind(this);//binding events
         this.calculateExpression = this.calculateExpression.bind(this);
     }
 
+    componentDidMount(){    
+        this.getHistory();
+    }
+
+    getHistory(){
+        fetch('api/history')
+            .then(res => res.json())
+            .then(data => {
+                this.setState({history: data});
+            });
+    }
+
     calculateExpression(e){//here i do the request from the server
-        e.preventDefault();
+
+    e.preventDefault();
         
         //console.log(JSON.stringify(this.state));
 
@@ -50,8 +64,10 @@ class Main extends Component {
                 })
                 .then(res => res.json())
                 .then(data =>{
-                    console.log("data: "+data);
+                    //console.log("data: "+data);
                     M.toast({html: 'Saved in history'})
+                    this.setState({expression: ''});
+                    this.getHistory();
     
                 })
                 .catch(err => console.error(err));
@@ -59,6 +75,8 @@ class Main extends Component {
             .catch(err => console.error(err));
     
             console.log("result: "+result);
+
+            
 
         }
     
@@ -77,7 +95,8 @@ class Main extends Component {
     render(){
         return(
             <div>
-                <div id="menu" className="col l4 m4 s4 offset-l4">
+                <div className="col l6 m6 s6">
+                <div id="menu" className="col l6 m6 s6 offset-l6">
                     <h5>TOPLIVE Calculator</h5>
                     <ul id="nav-mobile">
                     <li name="current">Current Operation: {this.state.current}</li>
@@ -85,21 +104,49 @@ class Main extends Component {
                     </ul>
                 </div>
                 
-                <div id="main" className="center col l4 s4 m4 offset-l4">
+                <div id="main" className="center col l6 s6 m6 offset-l6">
                     <form onSubmit={this.calculateExpression}>
                         <div className="input-field">
-                            <input name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" />
+                            <input name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" value={this.state.expression} />
                         </div>
                         <button type="submit"  className="waves-effect waves-light btn">Calculate</button>
-                        <div id="result" className="col l4 m4 s4 offset-l4">
-                            {this.state.result}
+                        <div id="result" className="col l6 m6 s6 offset-l6">
+                            {"Result: "+this.state.result}
                         </div>
                     </form>
                 </div>
 
-                <div id="footer" className="valign-wrapper col l4 s4 m4 offset-l4">       
+                <div id="footer" className="valign-wrapper col l6 s6 m6 offset-l6">       
                     Sergiodavidposse@gmail.com
                 </div>
+
+                </div>
+                <div className="col l6 m6 s6">
+                <div id="history" className="card-panel col l6 s6 m6">
+                    <h5>Operation History</h5>
+                    <table className="highlight centered stripped">
+                        <thead>
+                            <tr>
+                                <th>Operation</th>
+                                <th>Result</th>
+                            </tr>  
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.history.map(item => {
+                                    return(
+                                        <tr key={item._id}>
+                                            <td>{item.expression}</td>
+                                            <td>{item.result}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                
             </div>
         )
     }

@@ -10,7 +10,7 @@ const History = require('../models/History'); //link the model file
 //i use async await that is something that im testing is very new for me
 
 router.get('/history', async (req, res) => { 
-    const history = await  History.find();
+    const history = await  History.find().sort({date: 1});
     res.json(history);
 });
 

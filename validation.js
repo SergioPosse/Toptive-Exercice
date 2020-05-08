@@ -1,9 +1,6 @@
 module.exports = {
             validate_operation: function (expresion){
 
-                var error;
-                
-
                     let check_letters = expresion.match(/[a-z]/i);
 
                     console.log("check_letters: "+check_letters);

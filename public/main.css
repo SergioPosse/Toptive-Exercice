@@ -9,12 +9,20 @@
     height: 50px;
     background-color: rgb(18, 4, 27);
     margin-top:0px;
+    color: rgb(151, 118, 158);
 }
 #menu{
     background-color: rgb(18, 4, 27);
     margin-top:50px;
     margin-bottom:0px;
     color: rgb(240, 223, 223)
+}
+
+#history{
+    margin-top:50px;
+    background-color: indianred;
+    height:420px;
+    overflow-y: scroll;
 }
 .row .col .l4 .s4 .m4{
     padding: 0;
@@ -23,6 +31,10 @@
     padding: 20px;
     font-weight: bolder;
     font-size: large;
+    color: rgb(255, 201, 158)
+}
+ul li{
+    color: wheat;
 }
 ul li a{
     color: rgb(79, 255, 25);
@@ -36,4 +48,4 @@ input{
 input::placeholder {
     color: #bbad85;
     opacity: 0.3;
-  }
+}
