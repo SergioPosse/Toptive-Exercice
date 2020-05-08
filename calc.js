@@ -2,12 +2,12 @@ module.exports = {
 
                     calc_with_brackets: function (posI,posF,expresion){
 
-                    console.log("dentro de cal: "+expresion);
+                    //console.log("dentro de cal: "+expresion);
 
                     for(i=posI; i<posF; i++){
-                        console.log("expresion[]: "+expresion[i])
+                        //console.log("expresion[]: "+expresion[i])
                         if(expresion[i]=="("){
-                            console.log("entro al if de parent");
+                            //console.log("entro al if de parent");
                             posI=i+1;
                             for(j=posF; j>posI; j--){
                                 if(expresion[j]==")"){
@@ -18,6 +18,8 @@ module.exports = {
                             //exit for because call again the recursive
                             console.log("posI: "+posI);
                             console.log("posF: "+posF);
+
+                            //must use this for the return of a recursive
                             return this.calc_with_brackets(posI,posF,expresion);
                             
                         }
@@ -53,7 +55,7 @@ module.exports = {
                    
                     let expresion_final = parte1 + result + parte2;
                     //alert("expre final: "+expresion_final);
-                    console.log("exp final en calc: "+expresion_final);
+                    //console.log("exp final en calc: "+expresion_final);
 
                     for(n=0; n < expresion_final.length; n++){
 
@@ -64,7 +66,7 @@ module.exports = {
                     }
 
                     let resultado = eval(expresion_final);
-                    console.log("resultado en calc: "+resultado);
+                    //console.log("resultado en calc: "+resultado);
                     return resultado;        
     }
 };

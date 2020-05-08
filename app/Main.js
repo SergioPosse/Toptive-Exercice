@@ -27,12 +27,29 @@ class Main extends Component {
         })
         .then(res => res.json())
         .then(data =>{
-            console.log("data"+data);
+            //console.log("data"+data);
             this.setState({
                 result: data
             })
+            fetch('api/history', {
+                method: 'POST',
+                body: JSON.stringify(this.state),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json'
+                }
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log("data: "+data);
+            })
+            .catch(err => console.error(err));
         })
         .catch(err => console.error(err));
+
+        console.log("result: "+result);
+
+        
         
     }
 

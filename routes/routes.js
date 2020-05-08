@@ -16,20 +16,22 @@ router.get('/', async (req, res) => {
 
 router.post('/history', async (req, res) => { //post
     const { expression, result } = req.body;
+    console.log("result in route: "+result);
+    console.log("expresion in result: "+expression);
     const history = new History({expression, result});
     await history.save(); //its save in "histories" mongo atlas use plural and singular for model and collection like rails
 
-    console.log(history);
+    //console.log(history);
     res.json({status: 'saved'});
 });
 
 router.post('/calculate',(req, res) => { //post
-    console.log("entro al router");
+    //console.log("entro al router");
     const { expression } = req.body;
   
-    console.log("expression router: "+expression);
+    //console.log("expression router: "+expression);
     var resultado = calc.calc_with_brackets(0,expression.length,expression);
-    console.log("resultado: "+resultado);
+    //console.log("resultado: "+resultado);
     res.json(resultado);
 });
 
