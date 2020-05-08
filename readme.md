@@ -4,10 +4,19 @@ Exercice for a employ test in Toptive (www.toptive.co)
 
 ## Getting Started
 
+First!! you must know that there is another version more simple:
+
+https://github.com/SergioPosse/Toptive-Exercice-NO-REST
+
+because this version have a PROBLEM TO FIX when i send a json
+with an operation that have nested parentheses
+example: ((2))
+
 The project try to use a MERN (mongo-express-react-node) standard and REST architecture
 
-The project resolve an operation formated in string and containing parentheses,
-plus, save the operation and result in a Mongo Atlas collection called histories
+The project resolve an operation formated in string and containing parentheses
+
+Save the operation and result in a Mongo Atlas collection called histories
 that belongs to a data base named toptive and is accesible for a guest with studying propose
     user: invitado pass: invitado
 
@@ -39,7 +48,7 @@ Now the server will be locally in localhost:3000 with a simple interface by defa
         npm run dev
 
 ****Endpoint for get the full history
-==================================
+
 GET localhost:3000/api/history
 
 ## Authors

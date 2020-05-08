@@ -2,7 +2,6 @@
     background-color:rgb(65, 29, 70);
     margin-bottom:0px;
     margin-top:0px;
-    padding: 50px;
     color: white;
 }
 #footer{
@@ -10,6 +9,7 @@
     background-color: rgb(18, 4, 27);
     margin-top:0px;
     color: rgb(151, 118, 158);
+    font-size: small;
 }
 #menu{
     background-color: rgb(18, 4, 27);
@@ -29,8 +29,8 @@
 }
 #result{
     padding: 20px;
+    margin-left:-30px;
     font-weight: bolder;
-    font-size: large;
     color: rgb(255, 201, 158)
 }
 ul li{

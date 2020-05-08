@@ -10,9 +10,10 @@ const History = require('../models/History'); //link the model file
 //i use async await that is something that im testing is very new for me
 
 router.get('/history', async (req, res) => { 
-    const history = await  History.find().sort({date: 1});
+    const history = await  History.find({}).sort({_id:-1});
     res.json(history);
 });
+
 
 router.post('/history', async (req, res) => { //post
     const { expression, result } = req.body;
@@ -30,7 +31,7 @@ router.post('/calculate',(req, res) => { //post
     const { expression } = req.body;
   
     //console.log("expression router: "+expression);
-    var resultado = calc.calc_with_brackets(0,expression.length,expression);
+    var resultado = calc.calc_with_parentheses(0,expression.length,expression);
     //console.log("resultado: "+resultado);
     res.json(resultado);
 });

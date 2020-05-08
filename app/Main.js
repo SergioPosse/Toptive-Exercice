@@ -100,7 +100,7 @@ class Main extends Component {
                             <input name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" value={this.state.expression} />
                         </div>
                         <button type="submit"  className="waves-effect waves-light btn">Calculate</button>
-                        <div id="result" className="col l6 m6 s6 offset-l6">
+                        <div id="result">
                             {"Result: "+this.state.result}
                         </div>
                     </form>
