@@ -24,12 +24,13 @@ router.post('/history', async (req, res) => { //post
 });
 
 router.post('/calculate',(req, res) => { //post
+    console.log("entro al router");
     const { expression } = req.body;
-    let result = calc.calc_without_brackets(expression, "/");
-    let result2 = calc.calc_without_brackets(result, "*");
-    let result3 = calc.calc_without_brackets(result2, "+");
-    let result4 = calc.calc_without_brackets(result3, "-");
-    res.json(result4);
+  
+    console.log("expression router: "+expression);
+    var resultado = calc.calc_with_brackets(0,expression.length,expression);
+    console.log("resultado: "+resultado);
+    res.json(resultado);
 });
 
 

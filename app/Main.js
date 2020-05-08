@@ -14,6 +14,9 @@ class Main extends Component {
 
     calculateExpression(e){//here i do the request from the server
         e.preventDefault();
+        
+        //console.log(JSON.stringify(this.state));
+
         fetch('api/calculate', {
             method: 'POST',
             body: JSON.stringify(this.state),
@@ -24,10 +27,13 @@ class Main extends Component {
         })
         .then(res => res.json())
         .then(data =>{
-            console.log(data);
-            this.setState({result: data})
+            console.log("data"+data);
+            this.setState({
+                result: data
+            })
         })
         .catch(err => console.error(err));
+        
     }
 
     handleChange(e){ 
@@ -38,13 +44,12 @@ class Main extends Component {
             current: value
             }
         )
-
     }
 
     render(){
         return(
             <div>
-                <div id="menu" class="col l4 m4 s4 offset-l4">
+                <div id="menu" className="col l4 m4 s4 offset-l4">
                     <h5>TOPLIVE Calculator</h5>
                     <ul id="nav-mobile">
                     <li name="current">Current Operation: {this.state.current}</li>
@@ -52,10 +57,10 @@ class Main extends Component {
                     </ul>
                 </div>
                 
-                <div id="main" class="center col l4 s4 m4 offset-l4">
+                <div id="main" className="center col l4 s4 m4 offset-l4">
                     <form onSubmit={this.calculateExpression}>
                         <div className="input-field">
-                            <input class="center" name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" />
+                            <input name="expression" onChange={this.handleChange} type="text" placeholder="2*4-(67+5)" />
                         </div>
                         <button type="submit"  className="waves-effect waves-light btn">Calculate</button>
                         <div id="result" className="col l4 m4 s4 offset-l4">
@@ -64,13 +69,13 @@ class Main extends Component {
                     </form>
                 </div>
 
-                <div id="footer" class="valign-wrapper col l4 s4 m4 offset-l4">       
+                <div id="footer" className="valign-wrapper col l4 s4 m4 offset-l4">       
                     Sergiodavidposse@gmail.com
                 </div>
             </div>
         )
     }
     
-}
+};
 
 export default Main;
