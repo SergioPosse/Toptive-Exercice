@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
 
 const HistorySchema = new Schema({
@@ -12,5 +11,4 @@ const HistorySchema = new Schema({
     required: true
   }
 });
-
 module.exports = mongoose.model('History', HistorySchema); //create the model with the schema, all with mongoose tools

@@ -5,7 +5,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        rules:[
+        rules:[ //using babel with webpack for the react preset, see .babelrc file in root
             {
             use: 'babel-loader',
             test: /\.js$/,

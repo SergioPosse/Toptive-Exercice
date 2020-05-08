@@ -1,11 +1,6 @@
 import React from 'react';
-
 import { render } from 'react-dom';
+import Main from './Main';//import the Main component created wit react for render it
 
-import Main from './Main';
-//import Menu from './Menu';
-//import Footer from './Footer';
-
+//render to my react div in public/index.html
 render(<Main/>, document.getElementById('react'));
-//render(<Menu/>, document.getElementById('menu'));
-//render(<Footer/>, document.getElementById('footer'));

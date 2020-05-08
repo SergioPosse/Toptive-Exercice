@@ -13,11 +13,11 @@ class Main extends Component {
         this.handleChange = this.handleChange.bind(this);//binding events
         this.calculateExpression = this.calculateExpression.bind(this);
     }
-
+//autoload histoy panel data
     componentDidMount(){    
         this.getHistory();
     }
-
+//get all of history
     getHistory(){
         fetch('api/history')
             .then(res => res.json())
@@ -26,16 +26,12 @@ class Main extends Component {
             });
     }
 
+//calculate and save in history
     calculateExpression(e){//here i do the request from the server
 
-    e.preventDefault();
-        
-        //console.log(JSON.stringify(this.state));
-
-        console.log(this.state.expression);
+        e.preventDefault();
         let error = val.validate_operation(this.state.expression);
         console.log("error en main: "+error);
-
         if (error==1){
             M.toast({html: 'Syntax error in operation'})
         }
@@ -50,7 +46,6 @@ class Main extends Component {
             })
             .then(res => res.json())
             .then(data =>{
-                //console.log("data"+data);
                 this.setState({
                     result: data
                 })
@@ -64,24 +59,19 @@ class Main extends Component {
                 })
                 .then(res => res.json())
                 .then(data =>{
-                    //console.log("data: "+data);
                     M.toast({html: 'Saved in history'})
                     this.setState({expression: ''});
-                    this.getHistory();
+                    this.getHistory();//refresh the history panel
     
                 })
                 .catch(err => console.error(err));
             })
-            .catch(err => console.error(err));
-    
-            console.log("result: "+result);
-
-            
-
+            .catch(err => console.error(err)); 
         }
     
     }
 
+//update the Main component state on change
     handleChange(e){ 
         const { name, value} = e.target;
         this.setState(
@@ -91,7 +81,7 @@ class Main extends Component {
             }
         )
     }
-
+//render the html here
     render(){
         return(
             <div>
