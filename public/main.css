@@ -1,5 +1,5 @@
 #main{
-    background-color:rgb(83, 58, 48);
+    background-color:rgb(65, 29, 70);
     margin-bottom:0px;
     margin-top:0px;
     padding: 50px;
@@ -7,11 +7,11 @@
 }
 #footer{
     height: 50px;
-    background-color: rgb(27, 54, 30);
+    background-color: rgb(18, 4, 27);
     margin-top:0px;
 }
 #menu{
-    background-color: rgb(26, 53, 36);
+    background-color: rgb(18, 4, 27);
     margin-top:50px;
     margin-bottom:0px;
     color: rgb(240, 223, 223)

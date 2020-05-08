@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const val = require('../validation.js');
 
 class Main extends Component {
     constructor(){
@@ -17,21 +18,15 @@ class Main extends Component {
         
         //console.log(JSON.stringify(this.state));
 
-        fetch('api/calculate', {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            }
-        })
-        .then(res => res.json())
-        .then(data =>{
-            //console.log("data"+data);
-            this.setState({
-                result: data
-            })
-            fetch('api/history', {
+        console.log(this.state.expression);
+        let error = val.validate_operation(this.state.expression);
+        console.log("error en main: "+error);
+
+        if (error==1){
+            M.toast({html: 'Syntax error in operation'})
+        }
+        if(error==0){
+            fetch('api/calculate', {
                 method: 'POST',
                 body: JSON.stringify(this.state),
                 headers: {
@@ -41,16 +36,32 @@ class Main extends Component {
             })
             .then(res => res.json())
             .then(data =>{
-                console.log("data: "+data);
+                //console.log("data"+data);
+                this.setState({
+                    result: data
+                })
+                fetch('api/history', {
+                    method: 'POST',
+                    body: JSON.stringify(this.state),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    console.log("data: "+data);
+                    M.toast({html: 'Saved in history'})
+    
+                })
+                .catch(err => console.error(err));
             })
             .catch(err => console.error(err));
-        })
-        .catch(err => console.error(err));
+    
+            console.log("result: "+result);
 
-        console.log("result: "+result);
-
-        
-        
+        }
+    
     }
 
     handleChange(e){ 
@@ -70,7 +81,7 @@ class Main extends Component {
                     <h5>TOPLIVE Calculator</h5>
                     <ul id="nav-mobile">
                     <li name="current">Current Operation: {this.state.current}</li>
-                        <li><a href="badges.html">View History</a></li>
+                        <li><a href="/api/history">History.json</a></li>
                     </ul>
                 </div>
                 

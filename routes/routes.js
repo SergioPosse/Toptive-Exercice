@@ -9,7 +9,7 @@ const History = require('../models/History'); //link the model file
 //my endpoints to make RESTFUL
 //i use async await that is something that im testing is very new for me
 
-router.get('/', async (req, res) => { 
+router.get('/history', async (req, res) => { 
     const history = await  History.find();
     res.json(history);
 });

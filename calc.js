@@ -1,7 +1,6 @@
 module.exports = {
-
                     calc_with_brackets: function (posI,posF,expresion){
-
+                        
                     //console.log("dentro de cal: "+expresion);
 
                     for(i=posI; i<posF; i++){
